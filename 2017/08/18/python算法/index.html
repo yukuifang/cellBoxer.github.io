@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132# 二分算法查找 时间复制度log(n)def binary_search(list,item):    row = 0    high = len(list)-1    while row &amp;lt;= high:        mid = int((row + high) / 2)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python算法">
+<meta property="og:url" content="http://yoursite.com/2017/08/18/python算法/index.html">
+<meta property="og:site_name" content="箱子格">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132# 二分算法查找 时间复制度log(n)def binary_search(list,item):    row = 0    high = len(list)-1    while row &amp;lt;= high:        mid = int((row + high) / 2)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-24T10:08:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python算法">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132# 二分算法查找 时间复制度log(n)def binary_search(list,item):    row = 0    high = len(list)-1    while row &amp;lt;= high:        mid = int((row + high) / 2)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/18/python算法/"/>
+
+
+
+
+
+  <title>python算法 | 箱子格</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/yukuifang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">箱子格</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">远方不远</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            照片
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书籍
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-photos" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/python算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fangyukui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wode.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="箱子格">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T15:00:55+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># 二分算法查找 时间复制度log(n)</span><br><span class="line"></span><br><span class="line">def binary_search(list,item):</span><br><span class="line"></span><br><span class="line">    row = 0</span><br><span class="line"></span><br><span class="line">    high = len(list)-1</span><br><span class="line"></span><br><span class="line">    while row &lt;= high:</span><br><span class="line">        mid = int((row + high) / 2)</span><br><span class="line"></span><br><span class="line">        print(&apos;mid&apos;+str(mid))</span><br><span class="line"></span><br><span class="line">        guess = list[mid]</span><br><span class="line"></span><br><span class="line">        if item == guess:</span><br><span class="line">            return mid</span><br><span class="line"></span><br><span class="line">        if item &lt; guess:</span><br><span class="line">            high = mid - 1</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line">            row = mid + 1</span><br><span class="line"></span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line">    res = binary_search([1,3,4,5,7,9],4)</span><br><span class="line"></span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># 选择排序 时间复杂度(O(n*n))</span><br><span class="line"></span><br><span class="line">def find_smallest(arr):</span><br><span class="line">    smallest_idx = 0</span><br><span class="line"></span><br><span class="line">    smallest = arr[smallest_idx]</span><br><span class="line"></span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line"></span><br><span class="line">        if arr[i] &lt; smallest:</span><br><span class="line"></span><br><span class="line">            smallest_idx = i</span><br><span class="line"></span><br><span class="line">            smallest = arr[smallest_idx]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return  smallest</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def section_sort(arr):</span><br><span class="line"></span><br><span class="line">    new_arr = []</span><br><span class="line"></span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line"></span><br><span class="line">        smallest =  find_smallest(arr)</span><br><span class="line"></span><br><span class="line">        arr.remove(smallest)</span><br><span class="line"></span><br><span class="line">        new_arr.append(smallest)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(new_arr)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line">    section_sort([1,5,3,9])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 快速排序  时间复杂度：O(nlog(n)) 分而治之</span><br><span class="line"></span><br><span class="line">def quick_sort(arr):</span><br><span class="line"></span><br><span class="line">    if len(arr) &lt; 2:</span><br><span class="line">        return arr</span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line">        pivot = arr[0]</span><br><span class="line"></span><br><span class="line">        less = [i for i in arr[1:] if i &lt;= pivot]</span><br><span class="line"></span><br><span class="line">        greater = [i for i in arr[1:] if i&gt; pivot]</span><br><span class="line"></span><br><span class="line">        return quick_sort(less) + [pivot] +quick_sort(greater)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line">    new_arr = quick_sort([1,6,4,3])</span><br><span class="line"></span><br><span class="line">    print(new_arr)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#单向链表</span><br><span class="line"></span><br><span class="line">#在python当中，所有的变量都是引用，也就是指针； a = 10,表示a 这个引用指向10这块内存；既然a 是引用，也可以去指向其他类型，如</span><br><span class="line"># a= &apos;hello&apos;</span><br><span class="line"></span><br><span class="line">#在其他语言比如c语言当中，int a = 10;这个a 是10这个内存的别名；注意别名不是地址，比如我叫方煜逵，我的别名叫小方，但是我的地址是在员村XXX，你可以到员村XXX这个地址找到我，</span><br><span class="line">#但是你到小方这个地址找到我，显然很扯！所以别名说的还是10这块内存；故这块内存是int类型，就无法在存其他了类型了；当然c语言引入指针类型int *b 来指向10这块内存</span><br><span class="line"></span><br><span class="line">class SingleNode(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,item):</span><br><span class="line">        &quot;&quot;&quot;单链表的结点&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        # _item存放数据元素</span><br><span class="line">        self.item = item</span><br><span class="line">        # _next是下一个节点的标识</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#单链表的实现</span><br><span class="line">class SingleLinkList(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,head = None):</span><br><span class="line"></span><br><span class="line">        self.__head = head</span><br><span class="line"></span><br><span class="line">    def is_empty(self):</span><br><span class="line">        &quot;&quot;&quot;判断链表是否为空&quot;&quot;&quot;</span><br><span class="line">        return self.__head == None</span><br><span class="line"></span><br><span class="line">    def length(self):</span><br><span class="line">        &quot;&quot;&quot;链表长度&quot;&quot;&quot;</span><br><span class="line">        # cur初始时指向头节点</span><br><span class="line">        cur = self.__head</span><br><span class="line">        count = 0</span><br><span class="line">        # 尾节点指向None，当未到达尾部时</span><br><span class="line">        while cur != None:</span><br><span class="line">            count += 1</span><br><span class="line">            # 将cur后移一个节点</span><br><span class="line">            cur = cur.next</span><br><span class="line">        return count</span><br><span class="line"></span><br><span class="line">    def travel(self):</span><br><span class="line">        &quot;&quot;&quot;遍历链表&quot;&quot;&quot;</span><br><span class="line">        cur = self.__head</span><br><span class="line">        while cur != None:</span><br><span class="line">            print(cur.item,end=&apos; &apos;)</span><br><span class="line">            cur = cur.next</span><br><span class="line">        print(&apos;&apos;)</span><br><span class="line"></span><br><span class="line">    # 尾部添加元素</span><br><span class="line">    def append(self,item):</span><br><span class="line">        &quot;&quot;&quot;尾部添加元素&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        node = SingleNode(item)</span><br><span class="line"></span><br><span class="line">        # 先判断链表是否为空，若是空链表，则将_head指向新节点</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            self.__head = node</span><br><span class="line">        # 若不为空，则找到尾部，将尾节点的next指向新节点</span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line"></span><br><span class="line">            while cur.next != None:</span><br><span class="line">                cur = cur.next</span><br><span class="line">            cur.next = node</span><br><span class="line">    #头部添加元素</span><br><span class="line">    def add(self,item):</span><br><span class="line">        &quot;&quot;&quot;头部添加元素&quot;&quot;&quot;</span><br><span class="line">        node = SingleNode(item)</span><br><span class="line">        node.next = self.__head</span><br><span class="line">        self.__head = node</span><br><span class="line"></span><br><span class="line">    def insert(self, pos, item):</span><br><span class="line"></span><br><span class="line">        if pos &lt;= 0:</span><br><span class="line">            self.add(item)</span><br><span class="line">        elif pos &gt;=  self.length()-1:</span><br><span class="line">            self.append(item)</span><br><span class="line">        else:</span><br><span class="line">            node = SingleNode(item)</span><br><span class="line"></span><br><span class="line">            pre_cur = self.__head</span><br><span class="line"></span><br><span class="line">            cur_pos = 0</span><br><span class="line"></span><br><span class="line">            while cur_pos &lt; pos-1:</span><br><span class="line">                pre_cur = pre_cur.next</span><br><span class="line"></span><br><span class="line">                cur_pos += 1</span><br><span class="line"></span><br><span class="line">            node.next = pre_cur.next</span><br><span class="line"></span><br><span class="line">            pre_cur.next = node</span><br><span class="line"></span><br><span class="line">    def search(self, item):</span><br><span class="line">        &quot;&quot;&quot;链表查找节点是否存在，并返回True或者False&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        cur = self.__head</span><br><span class="line"></span><br><span class="line">        while cur!= None:</span><br><span class="line">            if item == cur.item:</span><br><span class="line">                return True</span><br><span class="line">            else:</span><br><span class="line">                cur = cur.next</span><br><span class="line"></span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def remove(self, item):</span><br><span class="line">        &quot;&quot;&quot;删除节点&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        cur = self.__head</span><br><span class="line"></span><br><span class="line">        pre = None</span><br><span class="line">        </span><br><span class="line">        while cur!= None:</span><br><span class="line">            if item == cur.item:</span><br><span class="line">                # 如果第一个就是删除的节点</span><br><span class="line">                if cur == self.__head:</span><br><span class="line">                    # 将头指针指向头节点的后一个节点</span><br><span class="line">                    self.__head = cur.next</span><br><span class="line">                    cur = self.__head</span><br><span class="line">                else:</span><br><span class="line">                    pre.next = cur.next</span><br><span class="line">                    pre = cur</span><br><span class="line">                    cur = cur.next</span><br><span class="line"></span><br><span class="line">            else:</span><br><span class="line"></span><br><span class="line">                pre = cur</span><br><span class="line"></span><br><span class="line">                cur = cur.next</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">     l = SingleLinkList()</span><br><span class="line">     l.append(1)</span><br><span class="line">     l.append(2)</span><br><span class="line"></span><br><span class="line">     l.append(3)</span><br><span class="line">     l.append(4)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     l.append(5)</span><br><span class="line">     l.append(6)</span><br><span class="line"></span><br><span class="line">     l.travel()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#单向循环链表</span><br><span class="line"></span><br><span class="line">class SingleNode(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,item):</span><br><span class="line">        &quot;&quot;&quot;单链表的结点&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        # _item存放数据元素</span><br><span class="line">        self.item = item</span><br><span class="line">        # _next是下一个节点的标识</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#单链表的实现</span><br><span class="line">class SingleSycLinkList(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,head = None):</span><br><span class="line"></span><br><span class="line">        if head:</span><br><span class="line">            self.__head = head</span><br><span class="line">            head.next = self.__head</span><br><span class="line">        else:</span><br><span class="line">            self.__head = None</span><br><span class="line"></span><br><span class="line">    def is_empty(self):</span><br><span class="line">        &quot;&quot;&quot;判断链表是否为空&quot;&quot;&quot;</span><br><span class="line">        return self.__head == None</span><br><span class="line"></span><br><span class="line">    def length(self):</span><br><span class="line">        &quot;&quot;&quot;链表长度&quot;&quot;&quot;</span><br><span class="line">        # cur初始时指向头节点</span><br><span class="line">        cur = self.__head</span><br><span class="line">        count = 1</span><br><span class="line">        # 尾节点指向None，当未到达尾部时</span><br><span class="line">        while cur.next != self.__head:</span><br><span class="line">            count += 1</span><br><span class="line">            # 将cur后移一个节点</span><br><span class="line">            cur = cur.next</span><br><span class="line">        return count</span><br><span class="line"></span><br><span class="line">    def travel(self):</span><br><span class="line">        &quot;&quot;&quot;遍历链表&quot;&quot;&quot;</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            return</span><br><span class="line">        cur = self.__head</span><br><span class="line"></span><br><span class="line">        while cur.next != self.__head:</span><br><span class="line">            print(cur.item,end=&apos; &apos;)</span><br><span class="line">            cur = cur.next</span><br><span class="line">        print(cur.item, end=&apos; &apos;)</span><br><span class="line"></span><br><span class="line">    # 尾部添加元素</span><br><span class="line">    def append(self,item):</span><br><span class="line">        &quot;&quot;&quot;尾部添加元素&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        node = SingleNode(item)</span><br><span class="line"></span><br><span class="line">        # 先判断链表是否为空，若是空链表，则将_head指向新节点</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            self.__head = node</span><br><span class="line">            node.next = self.__head</span><br><span class="line">        # 若不为空，则找到尾部，将尾节点的next指向新节点</span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line"></span><br><span class="line">            while cur.next != self.__head:</span><br><span class="line">                cur = cur.next</span><br><span class="line">            cur.next = node</span><br><span class="line">            node.next = self.__head</span><br><span class="line">    #头部添加元素</span><br><span class="line">    def add(self,item):</span><br><span class="line">        &quot;&quot;&quot;头部添加元素&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        node = SingleNode(item)</span><br><span class="line"></span><br><span class="line">        if self.is_empty():</span><br><span class="line">            self.append(item)</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        cur = self.__head</span><br><span class="line">        while cur.next != self.__head:</span><br><span class="line">            cur = cur.next</span><br><span class="line"></span><br><span class="line">        node.next = self.__head</span><br><span class="line"></span><br><span class="line">        cur.next = node</span><br><span class="line"></span><br><span class="line">        self.__head = node</span><br><span class="line"></span><br><span class="line">    def insert(self, pos, item):</span><br><span class="line"></span><br><span class="line">        if pos &lt;= 0:</span><br><span class="line">            self.add(item)</span><br><span class="line">        elif pos &gt;=  self.length()-1:</span><br><span class="line">            self.append(item)</span><br><span class="line">        else:</span><br><span class="line">            node = SingleNode(item)</span><br><span class="line"></span><br><span class="line">            pre_cur = self.__head</span><br><span class="line"></span><br><span class="line">            cur_pos = 0</span><br><span class="line"></span><br><span class="line">            while cur_pos &lt; pos-1:</span><br><span class="line">                pre_cur = pre_cur.next</span><br><span class="line"></span><br><span class="line">                cur_pos += 1</span><br><span class="line"></span><br><span class="line">            node.next = pre_cur.next</span><br><span class="line"></span><br><span class="line">            pre_cur.next = node</span><br><span class="line"></span><br><span class="line">    def search(self, item):</span><br><span class="line">        &quot;&quot;&quot;链表查找节点是否存在，并返回True或者False&quot;&quot;&quot;</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            return False</span><br><span class="line"></span><br><span class="line">        cur = self.__head</span><br><span class="line"></span><br><span class="line">        while cur.next!= self.__head:</span><br><span class="line">            if item == cur.item:</span><br><span class="line">                return True</span><br><span class="line">            else:</span><br><span class="line">                cur = cur.next</span><br><span class="line">        if cur.item == item:</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def remove(self, item):</span><br><span class="line">        &quot;&quot;&quot;删除节点&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        if self.is_empty():</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        cur = self.__head</span><br><span class="line"></span><br><span class="line">        pre = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        while cur.next!= self.__head:</span><br><span class="line">            if item == cur.item:</span><br><span class="line">                # 如果第一个就是删除的节点</span><br><span class="line">                if cur == self.__head:</span><br><span class="line">                    # 将头指针指向头节点的后一个节点</span><br><span class="line">                    real = self.__head</span><br><span class="line">                    while real.next != self.__head:</span><br><span class="line">                        real = real.next</span><br><span class="line"></span><br><span class="line">                    real.next = cur.next</span><br><span class="line"></span><br><span class="line">                    self.__head = cur.next</span><br><span class="line"></span><br><span class="line">                else:</span><br><span class="line">                    pre.next = cur.next</span><br><span class="line">                    pre = cur</span><br><span class="line">                    cur = cur.next</span><br><span class="line"></span><br><span class="line">            else:</span><br><span class="line"></span><br><span class="line">                pre = cur</span><br><span class="line"></span><br><span class="line">                cur = cur.next</span><br><span class="line"></span><br><span class="line">        # real = self.__head</span><br><span class="line">        # while real.next != self.__head:</span><br><span class="line">        #     real = real.next</span><br><span class="line">        if item == cur.item:</span><br><span class="line">            pre.next = self.__head</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">     l = SingleSycLinkList()</span><br><span class="line">     l.append(1)</span><br><span class="line">     # l.append(2)</span><br><span class="line">     # l.append(3)</span><br><span class="line"></span><br><span class="line">     # #</span><br><span class="line">     # l.add(0)</span><br><span class="line">     # l.insert(1,2)</span><br><span class="line">     # l.append(4)</span><br><span class="line">     #</span><br><span class="line">     #</span><br><span class="line">     # l.append(5)</span><br><span class="line">     # l.append(6)</span><br><span class="line"></span><br><span class="line">     l.remove(1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     l.travel()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">#双向链表</span><br><span class="line"></span><br><span class="line">class Node(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,item):</span><br><span class="line">        self.item = item</span><br><span class="line">        self.pre = None</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class DoubleLinkList(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self,node = None):</span><br><span class="line">        self.__head = node</span><br><span class="line"></span><br><span class="line">    def is_empty(self):</span><br><span class="line">        &quot;&quot;&quot;链表是否为空&quot;&quot;&quot;</span><br><span class="line">        return self.__head == None</span><br><span class="line"></span><br><span class="line">    def length(self):</span><br><span class="line">        &quot;&quot;&quot;链表长度&quot;&quot;&quot;</span><br><span class="line">        cur = self.__head</span><br><span class="line">        count = 0</span><br><span class="line">        while cur != None:</span><br><span class="line">            cur = cur.next</span><br><span class="line">            count += 1</span><br><span class="line">        return count</span><br><span class="line"></span><br><span class="line">    def travel(self):</span><br><span class="line">        &quot;&quot;&quot;遍历链表&quot;&quot;&quot;</span><br><span class="line">        cur = self.__head</span><br><span class="line">        while cur!= None:</span><br><span class="line">            print(cur.item,end=&apos; &apos;)</span><br><span class="line">            cur = cur.next</span><br><span class="line"></span><br><span class="line">        print(&apos;&apos;)</span><br><span class="line"></span><br><span class="line">    def append(self,item):</span><br><span class="line">        &quot;&quot;&quot;链表尾部添加&quot;&quot;&quot;</span><br><span class="line">        node = Node(item)</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            self.__head = node</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line">            while cur.next != None:</span><br><span class="line">                cur = cur.next</span><br><span class="line">            cur.next = node</span><br><span class="line">            node.pre = cur</span><br><span class="line"></span><br><span class="line">    def add(self, item):</span><br><span class="line">        &quot;&quot;&quot;链表头部添加&quot;&quot;&quot;</span><br><span class="line">        node = Node(item)</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            self.__head = node</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line">            node.next = cur</span><br><span class="line">            cur.pre = node</span><br><span class="line">            self.__head = node</span><br><span class="line"></span><br><span class="line">    def insert(self,pos, item):</span><br><span class="line">        &quot;&quot;&quot;指定位置添加&quot;&quot;&quot;</span><br><span class="line">        node = Node(item)</span><br><span class="line">        if pos &lt;=0:</span><br><span class="line">            self.add(item)</span><br><span class="line">        elif pos &gt;= self.length()-1:</span><br><span class="line">            self.append(item)</span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line">            count = 0</span><br><span class="line">            while count &lt; pos:</span><br><span class="line">                cur = cur.next</span><br><span class="line">                count += 1</span><br><span class="line">            cur.pre.next = node</span><br><span class="line"></span><br><span class="line">            cur.pre = node</span><br><span class="line"></span><br><span class="line">            node = cur.pre</span><br><span class="line"></span><br><span class="line">            node.next = cur</span><br><span class="line"></span><br><span class="line">    def search(self,item):</span><br><span class="line">        &quot;&quot;&quot;查找节点是否存在&quot;&quot;&quot;</span><br><span class="line">        cur = self.__head</span><br><span class="line">        while cur!=None:</span><br><span class="line">            if cur.item == item:</span><br><span class="line">                return True</span><br><span class="line">            cur = cur.next</span><br><span class="line">        return False</span><br><span class="line"></span><br><span class="line">    def remove(self,item):</span><br><span class="line">        &quot;&quot;&quot;删除节点&quot;&quot;&quot;</span><br><span class="line">        if self.is_empty():</span><br><span class="line">            return</span><br><span class="line">        else:</span><br><span class="line">            cur = self.__head</span><br><span class="line"></span><br><span class="line">            while cur != None:</span><br><span class="line">                if cur.item == item:</span><br><span class="line">                    node_pre = cur.pre</span><br><span class="line">                    node_next = cur.next</span><br><span class="line">                    #当删除为首结点</span><br><span class="line">                    if cur == self.__head:</span><br><span class="line">                        self.__head = node_next</span><br><span class="line">                        node_next.pre = None</span><br><span class="line">                    # 当删除为尾结点</span><br><span class="line">                    elif node_next == None:</span><br><span class="line">                        cur.pre.next = None</span><br><span class="line"></span><br><span class="line">                    else:</span><br><span class="line">                        node_pre.next = node_next</span><br><span class="line">                        node_next.pre = node_pre</span><br><span class="line"></span><br><span class="line">                cur = cur.next</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    dll = DoubleLinkList()</span><br><span class="line">    dll.append(2)</span><br><span class="line">    dll.append(3)</span><br><span class="line">    dll.append(4)</span><br><span class="line">    dll.append(5)</span><br><span class="line">    dll.add(1)</span><br><span class="line">    dll.insert(2,4)</span><br><span class="line">    dll.remove(1)</span><br><span class="line">    dll.travel()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/18/nodejs：---mac上阿里云部署--/" rel="prev" title="mac上阿里云部署">
+                mac上阿里云部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/wode.jpg"
+                alt="fangyukui" />
+            
+              <p class="site-author-name" itemprop="name">fangyukui</p>
+              <p class="site-description motion-element" itemprop="description">远方不远</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yukuifang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:m13560050110@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9131dedacebf" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-apple"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a3087e151882503dc53b02c/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-apple"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fangyukui</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

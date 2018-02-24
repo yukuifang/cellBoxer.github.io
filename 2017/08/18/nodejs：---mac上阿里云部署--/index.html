@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="🍀🍀🍀  今天是双11，你剁手了吗！反正我没手剁了！感觉双11不买点什么东西感觉不合众，索性在索尼官网店买了耳机，哈哈！奔着热巴来的!好吧，索性也买了个阿里云来学习学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac上阿里云部署">
+<meta property="og:url" content="http://yoursite.com/2017/08/18/nodejs：---mac上阿里云部署--/index.html">
+<meta property="og:site_name" content="箱子格">
+<meta property="og:description" content="🍀🍀🍀  今天是双11，你剁手了吗！反正我没手剁了！感觉双11不买点什么东西感觉不合众，索性在索尼官网店买了耳机，哈哈！奔着热巴来的!好吧，索性也买了个阿里云来学习学习">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4458273-a1de3ece2f8561e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4458273-79941ec78a9b0074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4458273-2c5737e96f023333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4458273-309481bb1fdb7872.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4458273-31cab7b07f3b74cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-24T10:08:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mac上阿里云部署">
+<meta name="twitter:description" content="🍀🍀🍀  今天是双11，你剁手了吗！反正我没手剁了！感觉双11不买点什么东西感觉不合众，索性在索尼官网店买了耳机，哈哈！奔着热巴来的!好吧，索性也买了个阿里云来学习学习">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4458273-a1de3ece2f8561e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/18/nodejs：---mac上阿里云部署--/"/>
+
+
+
+
+
+  <title>mac上阿里云部署 | 箱子格</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/yukuifang"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">箱子格</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">远方不远</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            照片
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            书籍
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-photos" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/nodejs：---mac上阿里云部署--/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fangyukui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wode.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="箱子格">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mac上阿里云部署</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T15:00:55+08:00">
+                2017-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>🍀🍀🍀  今天是双11，你剁手了吗！反正我没手剁了！感觉双11不买点什么东西感觉不合众，索性在索尼官网店买了耳机，哈哈！奔着热巴来的!好吧，索性也买了个阿里云来学习学习<br><img src="http://upload-images.jianshu.io/upload_images/4458273-a1de3ece2f8561e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="迪丽热巴"><br><a id="more"></a></p>
+<h4 id="【1】-登陆服务器"><a href="#【1】-登陆服务器" class="headerlink" title="【1】 登陆服务器"></a>【1】 登陆服务器</h4><p>1。mac上打开终端，ssh远程亲近阿里云，在终端输入命令，注意：120.78.218.126改用你们公网ip<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@120.78.218.126</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4458273-79941ec78a9b0074.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>2。创建用户，防止我们在root权限下错误操作影响系统级<br><img src="http://upload-images.jianshu.io/upload_images/4458273-2c5737e96f023333.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser cellBoxer</span><br><span class="line">passwd cellBoxer</span><br></pre></td></tr></table></figure></p>
+<p>把cellBoxer加入root组，以便后续sudo操作<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpasswd -a cellBoxer wheel</span><br></pre></td></tr></table></figure></p>
+<p>3。格式化服务器数据硬盘,具体安装官方文档的【步骤 2：格式化和挂载数据盘】<br><a href="https://help.aliyun.com/contact/introduction/ecs.html" target="_blank" rel="noopener">https://help.aliyun.com/contact/introduction/ecs.html</a></p>
+<h4 id="【2】-服务器软件准备"><a href="#【2】-服务器软件准备" class="headerlink" title="【2】 服务器软件准备"></a>【2】 服务器软件准备</h4><p>######1.yum更新到最新版本<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y update</span><br></pre></td></tr></table></figure></p>
+<p>######2.使用最新源代码构建Node.js，要进行软件的安装，需要一组用来编译源代码的开发工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y groupinstall &quot;Development Tools&quot;</span><br></pre></td></tr></table></figure></p>
+<p>######3.安装node.js</p>
+<blockquote>
+<p>步骤1：<br> 开始安装Node.js，先进入/usr/src文件夹，这个文件夹通常用来存放软件源代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/src</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤2：<br>从<a href="http://link.zhihu.com/?target=http%3A//nodejs.org/download" target="_blank" rel="noopener">Node.js的站点</a>中获取压缩档源代码,根据最新版本号为准。🍀🍀🍀这一步下载真心慢，心累！我都看了一集猎场了🍀🍀🍀<br><img src="http://upload-images.jianshu.io/upload_images/4458273-309481bb1fdb7872.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nodejs.org/dist/v6.9.1/node-v6.9.1.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>步骤3：<br>解压缩文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxf node-v6.9.1.tar.gzcd</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤4<br>进入解压后的文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd node-v6.9.1</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤5<br>执行配置脚本来进行编译预处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤6<br>编译源代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤7<br>当编译完成后，我们需要使之在系统范围内可用, 编译后的二进制文件将被放置到系统路径，默认情况下，Node二进制文件应该放在/user/local/bin/node文件夹下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤8<br>此时Node.js安装完毕！nodejs下载默认有npm模块管理器，利用它安装 express 和 forever，这两个 global 安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -g install express forever</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤9<br>建立超级链接, 不然 sudo node 时会报 “command not found”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/bin/node /usr/bin/node</span><br><span class="line">sudo ln -s /usr/local/lib/node /usr/lib/node</span><br><span class="line">sudo ln -s /usr/local/bin/npm /usr/bin/npm</span><br><span class="line">sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf</span><br><span class="line">sudo ln -s /usr/local/bin/forever /usr/bin/forever</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤10<br>软件安装位置：/usr/local/mongodb<br>数据存放位置：/var/mongodb/data<br>日志存放位置：/var/mongodb/logs<br>进入文件夹/usr/local,下载mongodb源代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.11.tgz</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤11<br>解压安装包，重命名文件夹为mongodb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf mongodb-linux-x86_64-3.2.11.tgz</span><br><span class="line">mv mongodb-linux-x86_64-3.2.11 mongodb</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤12<br>创建数据和日志存放目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/mongodb</span><br><span class="line">mkdir /var/mongodb/data</span><br><span class="line">mkdir /var/mongodb/logs</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤13<br>打开rc.local文件，添加CentOS开机启动项：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.d/rc.local</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>步骤14<br>将mongodb启动命令追加到本文件中，让mongodb开机自启动：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/mongodb/bin/mongod --dbpath=/var/mongodb/data --logpath </span><br><span class="line">/var/mongodb/logs/log.log -fork</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>关闭 vim 后，直接手动启动mongodb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/mongodb/bin/mongod --dbpath=/var/mongodb/data --logpath /var/mongodb/logs/log.log -fork</span><br></pre></td></tr></table></figure></p>
+<p>看到如下信息说明已经安装完成并成功启动:<br>forked process: 21296<br>tips：数字不一定是要这个数字，是什么数字不重要，出现类似这样的就可以了</p>
+<blockquote>
+<p>#####到此结束，服务器应有的软件下载配置完毕</p>
+</blockquote>
+<h4 id="【3】-客户端mac准备上传node-app代码"><a href="#【3】-客户端mac准备上传node-app代码" class="headerlink" title="【3】 客户端mac准备上传node app代码"></a>【3】 客户端mac准备上传node app代码</h4><p>1。我们把 node的程序放在 /home 下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home</span><br></pre></td></tr></table></figure>
+<p> 2。<a href="http://git.oschina.net/" target="_blank" rel="noopener">http://git.oschina.net/</a> 管理代码拉取我的代码创库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://git.oschina.net/xxxxxxx/nodeapp.git   //你的repo地址</span><br></pre></td></tr></table></figure></p>
+<p>3。进入 我的nodejs代码文件夹KyNodejsPro<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd KyNodejsPro</span><br></pre></td></tr></table></figure></p>
+<p>4。创建js服务器文件mySever.js,并编辑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch mySever.js</span><br><span class="line">vim mySever.js</span><br></pre></td></tr></table></figure></p>
+<p>5。按下键盘i 进入编辑状态，然后把nodejs代码黏贴到编辑器里面<br>🍀🍀注意：hostname为你在阿里云服务器的私有ip，而不是共用ip，表示被坑了一把🍀🍀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line">const hostname = &apos;0.0.0.0&apos;;</span><br><span class="line">const port = 3000;</span><br><span class="line">const server = http.createServer((req, res) =&gt; &#123;</span><br><span class="line">res.statusCode = 200;</span><br><span class="line">res.setHeader(&apos;Content-Type&apos;, &apos;text/plain&apos;);</span><br><span class="line">res.end(&apos;Hello World\n&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(port, hostname, () =&gt; &#123;</span><br><span class="line">console.log(`Server running at http://$&#123;hostname&#125;:$&#123;port&#125;/`);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>最后按键盘esc退出编辑状态，然后:wq保存退出编辑器</p>
+<p>6。将代码在服务器永久执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forvever  start myServer.js</span><br></pre></td></tr></table></figure></p>
+<p>如果查看执行进程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever list</span><br></pre></td></tr></table></figure></p>
+<p>如果要取消永久执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forever stop 0</span><br></pre></td></tr></table></figure></p>
+<p>7。打开浏览器，输入你的公网ip，主要这里是公网ip + 端口号，也可以是对应的域名地址<img src="http://upload-images.jianshu.io/upload_images/4458273-31cab7b07f3b74cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="【3】-配置安全组"><a href="#【3】-配置安全组" class="headerlink" title="【3】 配置安全组"></a>【3】 配置安全组</h4><p>1.然后按照<a href="https://help.aliyun.com/document_detail/25475.html?spm=5176.2020520101.121.2.eKLyed#allowHttp" target="_blank" rel="noopener">这个教程</a>配置服务器实例的安全组规则。<br>1。其中的自定义端口就需要设置你想让大家可以访问的端口范围。比如<code>3000/8080</code>,表示别人可以访问这个中间段的端口号。在入网中添加一组规则tcp协议 ，3000/8080端口， 这样我们可以通过浏览器等反问我们的公网<br>2。注意要选在入网中添加一组规则：icmp协议，22/22端口，这样我们可以在mac终端ssh访问22端口的远程阿里云服务器<br>3。注意要选在入网中添加一组规则：tcp协议 ，这样我们可以在mac终端ping命令我们的公网ip</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/18/python算法/" rel="next" title="python算法">
+                <i class="fa fa-chevron-left"></i> python算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/18/python正则案例/" rel="prev" title="python正则案例">
+                python正则案例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/wode.jpg"
+                alt="fangyukui" />
+            
+              <p class="site-author-name" itemprop="name">fangyukui</p>
+              <p class="site-description motion-element" itemprop="description">远方不远</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yukuifang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:m13560050110@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/9131dedacebf" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-apple"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5a3087e151882503dc53b02c/posts" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-apple"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#【1】-登陆服务器"><span class="nav-number">1.</span> <span class="nav-text">【1】 登陆服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【2】-服务器软件准备"><span class="nav-number">2.</span> <span class="nav-text">【2】 服务器软件准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【3】-客户端mac准备上传node-app代码"><span class="nav-number">3.</span> <span class="nav-text">【3】 客户端mac准备上传node app代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#【3】-配置安全组"><span class="nav-number">4.</span> <span class="nav-text">【3】 配置安全组</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fangyukui</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
